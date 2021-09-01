@@ -10,7 +10,7 @@ Python
 
 ## Installation
 Clone the repo
-git clone https://github.com/Deeptumdiya/Mysite.git
+git clone https://github.com/arpit0907/my_site.git
 
 Install all packages
 pip install -r requirment.txt

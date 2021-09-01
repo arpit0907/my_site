@@ -14,11 +14,11 @@ class UpdateCategoryForm(forms.ModelForm):
 class CreateProductForm(forms.ModelForm):
     class Meta:
         model = Products
-        fields = ['name','category','price','description','image']
+        fields = ['name','category','price','description','image','tag']
 
 
 class UpdateProductForm(forms.ModelForm):
     class Meta:
         model = Products
-        fields = ['name','category','price','description','image']
+        fields = ['name','category','price','description','image','tag']
 

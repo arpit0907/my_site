@@ -20,6 +20,6 @@ urlpatterns = [
     #for manage categories
     path('product/create/', ProductCreateView.as_view(), name='category-create'),
     path('product/update/<int:pk>', ProductUpdateView.as_view(), name='category-update'),
-    path('<pk>/product/delete/', ProductDeleteView.as_view()),
+    path('<pk>/product/delete/', ProductDeleteView.as_view(),name='product-delete'),
 
 ]

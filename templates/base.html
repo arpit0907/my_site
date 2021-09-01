@@ -27,9 +27,10 @@
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg bg-dark">
         <a class="navbar-brand" href="/">My Site</a>
+        {% if request.session.customer_id %}
         <a class="navbar-brand" href="/product/create/">Add Products</a>
         <a class="navbar-brand" href="/category/create/">Add Categories</a>
-
+        {% endif %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,13 +43,15 @@
 
 
             <ul class="navbar-nav my-2 my-lg-0 navbar-right">
+
+                {% if request.session.customer_id %}
                 <div class="search-bar">
                     <form action="/s/">
                         <input type="text" placeholder="Search.." name="search">
                         <button type="submit"><i class="fa">Search</i></button>
                     </form>
                 </div>
-
+                {% endif %}
                 {% if request.session.customer_id %}
                 <li class="nav-item active">
                     <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>

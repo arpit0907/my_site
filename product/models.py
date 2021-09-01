@@ -1,6 +1,12 @@
 from django.db import models
 
 # Create your models here.
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
+
 class Products(models.Model):
     """Create A Product model to add the products"""
     name = models.CharField(max_length=50)
@@ -8,7 +14,7 @@ class Products(models.Model):
     price = models.IntegerField(default=0)
     description = models.CharField(max_length=200)
     image = models.ImageField(upload_to = 'uploads/products/')
-
+    tag = models.ManyToManyField(Tag,related_name='tag')
 
     @staticmethod
     def get_product_by_id(category_id):
@@ -30,6 +36,7 @@ class Category(models.Model):
     def get_all_categories():
         return Category.objects.all()
     
+
 
 class Customer(models.Model):
     """Create Customer model to login and signup for customer"""

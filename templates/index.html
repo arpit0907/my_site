@@ -41,6 +41,10 @@
                         <form action="details">
                             <input type="text" hidden name="product_id" value="{{product.id}}">
                             <button type="submit" class="btn btn-primary">Details</button>
+                            <a href="/product/update/{{product.id}}"><button type="button" class="btn btn-primary">Update</button></a>
+                            <br>
+                            <br>
+                            <a href="/{{product.id}}/product/delete/"><button type="button" class="btn btn-primary">Delete</button></a>
                         </form>
                         <!-- <a href="/details" class="btn btn-primary">{{product.id}}</a> -->
                     </div>
