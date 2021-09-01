@@ -1,0 +1,14 @@
+*.pyc
+*/media/
+**/migrations/
+*/uploads/
+# Environments
+
+
+
+
+
+
+
+
+
