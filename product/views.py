@@ -62,7 +62,7 @@ class Signup(View):
         if not error_message:
             customer.password = make_password(customer.password)
             customer.register()
-            return redirect('homepage')
+            return redirect('/')
         else:
             data = {'error': error_message, 'values': value}
             return render(request, 'signup.html', data)
@@ -113,7 +113,7 @@ class Login(View):
 
 def logout(request):
     request.session.clear()
-    return redirect('login')
+    return redirect('/')
 
 
 def get_details(request):
@@ -139,7 +139,7 @@ class CategoryUpdateView(UpdateView):
     model = Category
     form_class = UpdateCategoryForm
     template_name = 'product/category_update.html'
-    success_url = '/'
+    success_url = '/category/list/'
    
     def form_valid(self, form, **kwargs):
         category = form.save(commit=False)
@@ -147,6 +147,16 @@ class CategoryUpdateView(UpdateView):
         category.save()
         messages.success(self.request, 'Practice area updated successfully!')
         return redirect(self.success_url)
+
+class CategoryListView(ListView):
+    model = Category
+    ordering = ['name']
+    form_class = CreateCategoryForm
+    template_name = 'products/category_list.html'
+    def get_context_data(self, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        context['createcategoryform'] = CreateCategoryForm
+        return context
 
 class CategoryDeleteView(DeleteView):
     model = Category
@@ -164,18 +174,29 @@ class ProductCreateView(CreateView):
         product.save()
         return redirect(self.success_url)
 
+class ProductListView(ListView):
+    model = Products
+    ordering = ['name']
+    form_class = CreateProductForm
+    template_name = 'products/products_list.html'
+    def get_context_data(self, **kwargs):
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['createproductform'] = CreateProductForm
+        return context
+
 class ProductUpdateView(UpdateView):
     model = Products
     form_class = UpdateProductForm
     template_name = 'product/products_update.html'
-    success_url = '/'
+    success_url = '/product/list/'
    
     def form_valid(self, form, **kwargs):
-        category = form.save(commit=False)
-        category.created_by = self.request.user
-        category.save()
+        product_obj = form.save(commit=False)
+        product_obj.created_by = self.request.user
+        product_obj.save()
         messages.success(self.request, 'Practice area updated successfully!')
         return redirect(self.success_url)
+
 
 class ProductDeleteView(DeleteView):
     model = Products

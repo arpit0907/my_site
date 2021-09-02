@@ -1,7 +1,7 @@
 *.pyc
 */media/
 **/migrations/
-*/uploads/
+*/uploads/products/
 
 # Environments
 
