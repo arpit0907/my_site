@@ -125,7 +125,7 @@ def get_details(request):
 class CategoryCreateView(CreateView):
     model = Category
     form_class = CreateCategoryForm
-    success_url = '/'
+    success_url = '/category/list/'
 
     def form_valid(self, form, **kwargs):
         name = self.request.POST.get('name')
@@ -160,12 +160,12 @@ class CategoryListView(ListView):
 
 class CategoryDeleteView(DeleteView):
     model = Category
-    success_url ="/"
+    success_url ="/category/list/"
     
 class ProductCreateView(CreateView):
     model = Products
     form_class = CreateProductForm
-    success_url = '/'
+    success_url = '/product/list/'
 
     def form_valid(self, form, **kwargs):
         name = self.request.POST.get('name')
@@ -200,4 +200,4 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Products
-    success_url ="/"        
+    success_url ="/product/list/"        

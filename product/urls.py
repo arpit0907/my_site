@@ -10,7 +10,7 @@ urlpatterns = [
     path('signup/',Signup.as_view(), name = 'signup'),
     path('',Login.as_view(), name = 'login'),
     path('logout/',views.logout),
-    path('details/',views.get_details),
+    path('index/details/',views.get_details),
    
     #for manage categories
     path('category/create/', CategoryCreateView.as_view(), name='category-create'),
